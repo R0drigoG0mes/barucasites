@@ -66,10 +66,10 @@ header{
 }
 
 .logo-header{
+    margin-top: 5px;
     width: 70px;
     height: 70px;
-    border-radius: 30px 5px 30px 5px;
-    margin: 5px;
+    border-radius: 10px 0px;
     display: inline;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.507);
 }
@@ -103,11 +103,12 @@ header{
     background-color: transparent;
     padding: 5px;
     border-radius: 10px 0px;
-    border: 1px solid var(--azul_logo);
-    color: var(--azul_logo);
+    border: 1px solid white;
+    color: white;
     font-family: var(--sans-serif);
     font-size: .8em;
     font-style: italic;
+    font-weight: bold;
     letter-spacing: 1px;
 }
 
@@ -126,6 +127,13 @@ main p{
     padding: 10px 0px;
     font-size: 1.2em;
     font-family: var(--serif);
+}
+
+.diferente{
+    width: 70%;
+    height: 70vh;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 article a{
@@ -189,4 +197,53 @@ footer ul{
 
 footer ul li{
     color: white;
+    margin-bottom: 10px;
 }
+
+footer ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+.storyset{
+    text-decoration: 2px underline var(--azul_claro_logo);
+    color: white;
+}
+
+.storyset, .copy{
+    display: block;
+    text-align: center;
+    margin: 10px 0px;
+    color: white;
+}
+
+.icon-whatsapp{
+    background-color: #25d366;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.icon-instagram{
+    background-image:linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.icon-facebook{
+    background-color: #1778f2;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.icon-phone{
+    background-color: #25d366;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.icon-twitter{
+    background-color: #00acee;
+    padding: 3px;
+    border-radius: 50%;
+}
+
