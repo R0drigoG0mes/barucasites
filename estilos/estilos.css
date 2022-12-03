@@ -69,7 +69,7 @@ header{
     margin-top: 5px;
     width: 70px;
     height: 70px;
-    border-radius: 10px 0px;
+    border-radius: 50%;
     display: inline;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.507);
 }
@@ -130,8 +130,8 @@ main p{
 }
 
 .diferente{
-    width: 70%;
-    height: 70vh;
+    width: 51%;
+    height: 60vh;
     margin-left: 50%;
     transform: translateX(-50%);
 }

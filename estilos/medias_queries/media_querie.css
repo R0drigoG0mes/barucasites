@@ -31,9 +31,13 @@
     }
 
     .logo-header{
-        margin-top: 20px;
+        margin: 20px;
         width: 150px;
         height: 150px;
+    }
+
+    header{
+        position: relative;
     }
 
     main h2{
