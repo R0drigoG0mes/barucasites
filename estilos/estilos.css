@@ -96,6 +96,9 @@ header{
     display: block;
     padding-bottom: 10px;
     padding-top: 10px;
+    text-align: center;
+    background-color: var(--roxo_logo);
+    border-top: 1px solid white;
 }
 
 .nav-options li{
@@ -141,7 +144,7 @@ article a{
    font-style: italic;
    display: block;
    padding: 10px 0px;
-   margin: 10px 0px;
+   margin: 10px 100px;
    font-family: var(--sans-serif);
    font-size: 1.2em;
    text-decoration: none;
@@ -182,13 +185,14 @@ footer{
 footer h2{
     font-family: var(--sans-serif);
     color: white;
-    background-image: linear-gradient(to right, var(--azul_logo), var(--azul_claro_logo));
     border-radius: 10px 0px;
     display: inline-block;
     margin: 10px 0px 10px 50%;
     transform: translateX(-50%);
     padding: 5px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.504);
+    background-color: var(--roxo_logo);
+    border: 1px solid white;
 }
 
 footer ul{
@@ -200,13 +204,24 @@ footer ul li{
     margin-bottom: 10px;
 }
 
+footer ul li input{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: .9em;
+}
+
+footer ul li input:focus{
+    outline: none;
+}
+
 footer ul li a{
     text-decoration: none;
     color: white;
 }
 
 .storyset{
-    text-decoration: 2px underline var(--azul_claro_logo);
+    text-decoration: 2px underline var(--roxo_logo);
     color: white;
 }
 
