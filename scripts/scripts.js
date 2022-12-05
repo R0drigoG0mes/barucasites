@@ -1,5 +1,6 @@
 const atizap = document.querySelector('.wats');
 const telefone = document.querySelector('.fone');
+const imagem_header = document.querySelector('.fundo-header');
 
 // -----------------------------------------------------------------
 
@@ -32,3 +33,21 @@ telefone.addEventListener("click", function(e){
     telefone.select();
     document.execCommand("copy");
 });
+
+// -------------- FUNDO HEADER -----------
+
+if(window.screen.width <= 500){
+    imagem_header.src = 'imagens/logo_500.webp';
+}
+
+if(window.screen.width > 500 && window.screen.width <= 800){
+    imagem_header.src = 'imagens/logo_800.webp';
+}
+
+if(window.screen.width > 800 && window.screen.width <= 1200){
+    imagem_header.src = 'imagens/logo_1200.webp';
+}
+
+if(window.screen.width > 1200 && window.screen.width <= 1500){
+    imagem_header.src = 'imagens/logo_1500.webp';
+}
