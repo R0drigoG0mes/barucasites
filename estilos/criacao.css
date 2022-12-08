@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+/* IMPORT */
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap');
+
+/* IMPORT FIM */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+    /* VARIÁVEIS */
+
+    /* CORES */
+    --azul_logo:#75EBFF;
+    --azul_escuro_logo:#1455D7;
+    --azul_claro_logo:#C9F7FF;
+    --roxo_logo:#9988FF;
+
+    /* FONTES */
+    --titulo_principal:'Lobster Two';
+    --sans-serif:'Raleway';
+    --serif:'Solway';
+
+}
+
+/* ANIMAÇÕES */
+
+@keyframes surgirEsquerda {
+    0%{
+        
+    }
+    25%{
+        
+    }
+    50%{
+        
+    }
+    100%{
+        
+    }
+}
+
+/* ANIMAÇÕES FIM */
+
+#ferramentas{
+    background-image: linear-gradient(to right, var(--roxo_logo),var(--azul_escuro_logo), var(--roxo_logo));
+    position: fixed;
+    height: 100%;
+    width: 35%;
+    color: white;
+    text-align: center;
+    font-family: var(--sans-serif);
+}
