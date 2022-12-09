@@ -28,7 +28,8 @@
 
 }
 
-body{
+html{
+    scroll-behavior: smooth;
 }
 
 .links{
