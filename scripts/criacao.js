@@ -1,7 +1,12 @@
 const caixaFerramentas = document.getElementById("ferramentas");
-const frechinha = document.getElementById("frecha");
 
+// -------------- ARRAYS ------------------
+
+var caminhoDoClique = [];
+var filhosDoClicado = [];
 var toquesX = [];
+
+// -------------- ARRAYS ------------------
 
 document.addEventListener("touchmove", function(e){
     [...e.changedTouches].forEach(touch =>{
@@ -10,28 +15,26 @@ document.addEventListener("touchmove", function(e){
         
         if(toquesX[0] > toquesX[1] && toquesX[1] > toquesX[2] && toquesX[2] > toquesX[3]){
             caixaFerramentas.style.animation = "surgirEsquerda 1s linear forwards";
-            frechinha.classList.remove("icon-circle-right");
-            frechinha.classList.add("icon-circle-left");
-            console.log('boa surgiu');
         }
         else if(toquesX[0] < toquesX[1] && toquesX[1] < toquesX[2] && toquesX[2] < toquesX[3]){
             caixaFerramentas.style.animation = "sumirEsquerda 1s linear forwards";
-            frechinha.classList.remove("icon-circle-left");
-            frechinha.classList.add("icon-circle-right");
-            console.log('boa sumiu');
         }
     })
 })
 
-frechinha.addEventListener("click", function(e){
-    if(frechinha.classList.contains("icon-circle-right")){
-        caixaFerramentas.style.animation = "surgirEsquerda 1s linear forwards";
-        frechinha.classList.remove("icon-circle-right");
-        frechinha.classList.add("icon-circle-left");
+caixaFerramentas.addEventListener("click", function(e){
+
+    caminhoDoClique = e.composedPath();
+    filhosDoClicado = caminhoDoClique[0].children;
+
+    if(caminhoDoClique[0] == '[object HTMLLIElement]' && filhosDoClicado[2].style.display == 'none'){
+        filhosDoClicado[2].style.display = 'block';
+        filhosDoClicado[1].classList.remove('icon-circle-down');
+        filhosDoClicado[1].classList.add('icon-circle-up');
     }
-    else{
-        caixaFerramentas.style.animation = "sumirEsquerda 1s linear forwards";
-        frechinha.classList.remove("icon-circle-left");
-        frechinha.classList.add("icon-circle-right");
+    else if(caminhoDoClique[0] == '[object HTMLLIElement]' && filhosDoClicado[2].style.display == 'block'){
+        filhosDoClicado[2].style.display = 'none';
+        filhosDoClicado[1].classList.remove('icon-circle-up');
+        filhosDoClicado[1].classList.add('icon-circle-down');
     }
 })

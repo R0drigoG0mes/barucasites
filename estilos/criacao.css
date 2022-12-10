@@ -44,7 +44,7 @@
         transform: translate3d(100%, 0, 0);
     }
     100%{
-        transform: translate3d(-.1%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
     }
 }
 
@@ -53,25 +53,35 @@
 #ferramentas{
     background-color: #ddd;
     position: fixed;
-    left: -35%;
+    left: -40%;
     height: 100%;
-    width: 35%;
+    width: 40%;
     color: black;
     text-align: center;
     font-family: var(--sans-serif);
 }
 
-#ferramentas ul{
+#lista_ferramentas{
     list-style-type: none;
+    margin: 10px 0px;
 }
 
-.abrir-ferramentas{
-    background-color: #ddd;
-    border-radius: 0px 10px 10px 0px;
-    padding: 10px 5px;
-    font-size: 2em;
-    position: absolute;
-    right: -38px;
-    top: 50%;
-    transform: translateY(-50%);
+#lista_ferramentas li{
+    margin: 5px 0px;
+    text-decoration: 2px underline var(--roxo_logo);
+}
+
+#lista_ferramentas li ul li{
+    margin: 5px 0px;
+    padding: 5px 0px;
+    text-decoration: 2px underline orange;
+    background-color: #ccc;
+}
+
+.caixa-das-ferramentas{
+    width: 100%;
+}
+
+.upload-img!important{
+    text-decoration: none;
 }
