@@ -74,14 +74,24 @@
 #lista_ferramentas li ul li{
     margin: 5px 0px;
     padding: 5px 0px;
-    text-decoration: 2px underline orange;
     background-color: #ccc;
+}
+
+#lista_ferramentas li ul span{
+    text-decoration: 2px underline orange;
 }
 
 .caixa-das-ferramentas{
     width: 100%;
 }
 
-.upload-img!important{
-    text-decoration: none;
+.upload-img{
+    border-radius: 10px;
+    padding: 1px 7px;
+    border: solid 1px black;
+    background-color: orange;
+}
+
+.icon-arrow-up{
+    font-size: .8em;
 }
