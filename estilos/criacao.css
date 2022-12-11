@@ -50,6 +50,18 @@
 
 /* ANIMAÇÕES FIM */
 
+/* ICONES */
+
+.icon-arrow-up{
+    font-size: .7em;
+}
+
+.icon-circle-down, .icon-circle-up{
+    font-size: .75em;
+}
+
+/* ICONES FIM */
+
 #ferramentas{
     background-color: #ddd;
     position: fixed;
@@ -67,8 +79,12 @@
 }
 
 #lista_ferramentas li{
-    margin: 5px 0px;
+    margin: 10px 0px;
     text-decoration: 2px underline var(--roxo_logo);
+}
+
+.laranja{
+    text-decoration: 2px underline orange!important;
 }
 
 #lista_ferramentas li ul li{
@@ -77,21 +93,25 @@
     background-color: #ccc;
 }
 
-#lista_ferramentas li ul span{
-    text-decoration: 2px underline orange;
-}
-
 .caixa-das-ferramentas{
     width: 100%;
 }
 
-.upload-img{
-    border-radius: 10px;
-    padding: 1px 7px;
-    border: solid 1px black;
-    background-color: orange;
+#upload_imagens{
+    margin: 30px 0px;
+    display: inline-block;
+    width: 100%;
+    color: white;
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
+    background-color: var(--roxo_logo);
+    padding: 5px 0px;
 }
 
-.icon-arrow-up{
-    font-size: .8em;
+.upload-img, input[type='file']{
+    display: inline-block;
+}
+
+hr{
+	/* border-color: orangered orangered; */
 }

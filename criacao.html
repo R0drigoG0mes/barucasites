@@ -15,52 +15,101 @@
         <h2>Ferramentas</h2>
         <hr>
         <ul id="lista_ferramentas">
-            <li>
 
-                <span class="icon-files-empty"></span> Arquivos <span class="icon-circle-down"></span>
+            <li id="arquivos_li">
 
-                <ul id="filho_1" style="display: none;">
-                    <li>
-                        <span><span class="icon-images"></span> Imagens <span class="icon-circle-down"></span></span>
+                <span class="icon-files-empty"></span> 
+                Arquivos 
+                <span class="icon-circle-down frecha1"></span>
+
+                <ul style="display: none;">
+                    <li class="laranja">
+                        <span class="icon-images"></span> 
+                        Imagens 
+                        <span class="icon-circle-down"></span>
+
+                        <div id="upload_imagens" style="display: none;">
+                            <label for="arquivo_img" class="upload-img">Upload <span class="icon-arrow-up"></span></label>
+                        
+                            <input type="file" name="" id="arquivo_img" style="display: none;" accept="image/*">
+                        </div>
+                    </li>
+
+                    <li class="laranja">
+                        <span class="icon-mic"></span> 
+                        Audios 
+                        <span class="icon-circle-down"></span>
+
+                        <div style="display: none;">
+
+                        </div>
                     </li>
                 </ul>
 
             </li>
 
-            <div class="caixa-das-ferramentas" id="caixa-imagens" style="display: none;">
+            <li id="detalhes_li">
 
-                <label for="arquivo_img" class="upload-img">Upload <span class="icon-arrow-up"></span></label>
-                
-                <input type="file" name="" id="arquivo_img" style="display: none;" accept="image/*">
+                <span class="icon-search"></span> 
+                Detalhes 
+                <span class="icon-circle-down frecha2"></span>
 
-            </div>
-
-            <li>
-                Visual <span class="icon-circle-down"></span>
-                <ul id="filho_1" style="display: none;">
-                    <li>Ícones <span class="icon-circle-down"></span></li>
+                <ul style="display: none;">
+                    <li class="laranja">
+                        <span class="icon-info"></span> 
+                        Ícones 
+                        <span class="icon-circle-down"></span>
+                    </li>
                 </ul>
+
             </li>
 
             <li>
-                Incorporar <span class="icon-circle-down"></span>
+
+                <span class="icon-profile"></span> 
+                Formulários 
+                <span class="icon-circle-down"></span>
+
+                <ul style="display: none;">
+                    <li class="laranja">
+
+                    </li>
+                </ul>
+
             </li>
 
             <li>
-                Inserir Dados <span class="icon-circle-down"></span>
+
+                <span class="icon-stack"></span> 
+                Caixas 
+                <span class="icon-circle-down"></span>
+
+                <ul style="display: none;">
+                    <li class="laranja">
+
+                    </li>
+                </ul>
+
             </li>
 
             <li>
-                Caixas <span class="icon-circle-down"></span>
-            </li>
 
-            <li>
-                Caixas Prontas <span class="icon-circle-down"></span>
+                <span class="icon-dropbox"></span> 
+                Caixas Prontas 
+                <span class="icon-circle-down"></span>
+
+                <ul style="display: none;">
+                    <li class="laranja">
+
+                    </li>
+                </ul>
+
             </li>
 
         </ul>
         <hr>
         <h2>Atalhos</h2>
+        <span class="icon-embed2"></span> Incorporar <span class="icon-circle-down"></span>
     </div>
 </body>
 </html>

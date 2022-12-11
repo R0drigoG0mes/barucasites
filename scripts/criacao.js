@@ -1,12 +1,36 @@
+// ---------- FERRAMENTAS ------------
 const caixaFerramentas = document.getElementById("ferramentas");
+
+const arquivos_li = document.getElementById("arquivos_li");
+const detalhes_li = document.getElementById("detalhes_li");
+
+// ---------- FERRAMENTAS ------------
 
 // -------------- ARRAYS ------------------
 
 var caminhoDoClique = [];
-var filhosDoClicado = [];
 var toquesX = [];
+var filhosDoClicado = [];
 
 // -------------- ARRAYS ------------------
+
+// ------------ CONSTANTES -----------------
+
+const arquivos_imagens = document.getElementById("arquivos_imagens");
+const caixa_imagens = document.getElementById("caixa-imagens");
+const imagens = document.getElementById("imagens");
+const upload_imagens = document.getElementById("upload_imagens");
+
+// ------------ CONSTANTES -----------------
+
+// ----------- FRECHAS ------------
+
+const frecha1 = document.querySelector('.frecha1');
+const frecha2 = document.querySelector('.frecha2');
+
+// ----------- FRECHAS ------------
+
+// ------------ TOUCH ---------------
 
 document.addEventListener("touchmove", function(e){
     [...e.changedTouches].forEach(touch =>{
@@ -22,19 +46,23 @@ document.addEventListener("touchmove", function(e){
     })
 })
 
-caixaFerramentas.addEventListener("click", function(e){
+// ------------ TOUCH ---------------
 
+// ----------- CLIQUES ---------------
+
+caixaFerramentas.addEventListener("click", function(e){
     caminhoDoClique = e.composedPath();
     filhosDoClicado = caminhoDoClique[0].children;
 
-    if(caminhoDoClique[0] == '[object HTMLLIElement]' && filhosDoClicado[2].style.display == 'none'){
+    // console.log('==========================')
+    // console.log('==========================')
+    
+    if(caminhoDoClique[0] != '[object HTMLInputElement]' && caminhoDoClique[0] != '[object HTMLLabelElement]' && caminhoDoClique[0] != '[object HTMLSpanElement]' && filhosDoClicado[2].style.display == 'none'){
         filhosDoClicado[2].style.display = 'block';
-        filhosDoClicado[1].classList.remove('icon-circle-down');
-        filhosDoClicado[1].classList.add('icon-circle-up');
     }
-    else if(caminhoDoClique[0] == '[object HTMLLIElement]' && filhosDoClicado[2].style.display == 'block'){
+    else if(caminhoDoClique[0] != '[object HTMLInputElement]' && caminhoDoClique[0] != '[object HTMLLabelElement]' && caminhoDoClique[0] != '[object HTMLSpanElement]' && filhosDoClicado[2].style.display == 'block'){
         filhosDoClicado[2].style.display = 'none';
-        filhosDoClicado[1].classList.remove('icon-circle-up');
-        filhosDoClicado[1].classList.add('icon-circle-down');
     }
 })
+
+// ----------- CLIQUES ---------------
