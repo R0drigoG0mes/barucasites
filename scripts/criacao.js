@@ -18,8 +18,8 @@ var filhosDoClicado = [];
 
 const arquivos_imagens = document.getElementById("arquivos_imagens");
 const caixa_imagens = document.getElementById("caixa-imagens");
-const imagens = document.getElementById("imagens");
 const upload_imagens = document.getElementById("upload_imagens");
+const arquivos_imagens_input = document.getElementById("arquivo_img");
 
 // ------------ CONSTANTES -----------------
 
@@ -36,7 +36,7 @@ document.addEventListener("touchmove", function(e){
     [...e.changedTouches].forEach(touch =>{
 
         toquesX.unshift(touch.pageX);
-        
+
         if(toquesX[0] > toquesX[1] && toquesX[1] > toquesX[2] && toquesX[2] > toquesX[3]){
             caixaFerramentas.style.animation = "surgirEsquerda 1s linear forwards";
         }
@@ -54,15 +54,39 @@ caixaFerramentas.addEventListener("click", function(e){
     caminhoDoClique = e.composedPath();
     filhosDoClicado = caminhoDoClique[0].children;
 
-    // console.log('==========================')
-    // console.log('==========================')
-    
-    if(caminhoDoClique[0] != '[object HTMLInputElement]' && caminhoDoClique[0] != '[object HTMLLabelElement]' && caminhoDoClique[0] != '[object HTMLSpanElement]' && filhosDoClicado[2].style.display == 'none'){
+    // caminhoDoClique[0] != '[object HTMLInputElement]' && caminhoDoClique[0] != '[object HTMLLabelElement]' && caminhoDoClique[0] != '[object HTMLSpanElement]' 
+
+    if(caminhoDoClique[0] == '[object HTMLLIElement]' && filhosDoClicado[2] && filhosDoClicado[2].style.display == 'none'){
         filhosDoClicado[2].style.display = 'block';
     }
-    else if(caminhoDoClique[0] != '[object HTMLInputElement]' && caminhoDoClique[0] != '[object HTMLLabelElement]' && caminhoDoClique[0] != '[object HTMLSpanElement]' && filhosDoClicado[2].style.display == 'block'){
+    else if(caminhoDoClique[0] == '[object HTMLLIElement]' && filhosDoClicado[2] && filhosDoClicado[2].style.display == 'block'){
         filhosDoClicado[2].style.display = 'none';
     }
 })
 
 // ----------- CLIQUES ---------------
+
+// ----------- UPLOAD IMAGENS --------
+
+arquivos_imagens_input.addEventListener('change', function(e){
+    const inputTarget = e.target;
+    const file = inputTarget.files[0];
+
+    if(file){
+        const leitor = new FileReader();
+
+        leitor.addEventListener('load', function(e){
+            const alvoLeitor = e.target;
+
+            const imagem = document.createElement('img');
+            imagem.src = alvoLeitor.result;
+            imagem.classList.add('imagem');
+
+            console.log(alvoLeitor.result);
+        })
+
+        leitor.readAsDataURL(file);
+    }
+})
+
+// ----------- UPLOAD IMAGENS --------
