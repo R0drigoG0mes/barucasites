@@ -71,6 +71,7 @@
     color: black;
     text-align: center;
     font-family: var(--sans-serif);
+    overflow-y: auto;
 }
 
 #lista_ferramentas{
