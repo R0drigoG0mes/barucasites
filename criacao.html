@@ -11,6 +11,8 @@
     <title>Crie seu site</title>
 </head>
 <body>
+    <label for="arquivo_img" class="upload-img" style="display: none;"><span class="icon-arrow-up"></span><input type="file" name="" id="arquivo_img" style="display: none;" accept="image/*">
+    </label>
     <div id="ferramentas">
         <h2>Ferramentas</h2>
         <hr>
@@ -29,10 +31,7 @@
                         <span class="icon-circle-down"></span>
 
                         <div id="upload_imagens" style="display: none;">
-                            <label for="arquivo_img" class="upload-img">
-                                Upload <span class="icon-arrow-up"></span>
-                                <input type="file" name="" id="arquivo_img" style="display: none;" accept="image/*">
-                            </label>
+                            <button id="btn_upload">Upload <span class="icon-arrow-up"></span></button>
                         </div>
                     </li>
 
@@ -189,5 +188,6 @@
         <hr>
         <a href="index.html"><span class="icon-home3"></span> Início</a>
     </div>
+
 </body>
 </html>

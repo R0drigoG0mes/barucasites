@@ -20,15 +20,11 @@ const arquivos_imagens = document.getElementById("arquivos_imagens");
 const caixa_imagens = document.getElementById("caixa-imagens");
 const upload_imagens = document.getElementById("upload_imagens");
 const arquivos_imagens_input = document.getElementById("arquivo_img");
+const btn_upload = document.getElementById("btn_upload");
+const label = document.querySelector('.upload-img');
+const imagensParaAdicionarNoSite = document.querySelector('.imagem');
 
 // ------------ CONSTANTES -----------------
-
-// ----------- FRECHAS ------------
-
-const frecha1 = document.querySelector('.frecha1');
-const frecha2 = document.querySelector('.frecha2');
-
-// ----------- FRECHAS ------------
 
 // ------------ TOUCH ---------------
 
@@ -68,6 +64,10 @@ caixaFerramentas.addEventListener("click", function(e){
 
 // ----------- UPLOAD IMAGENS --------
 
+btn_upload.addEventListener('click', function(e){
+    label.click();
+})
+
 arquivos_imagens_input.addEventListener('change', function(e){
     const inputTarget = e.target;
     const file = inputTarget.files[0];
@@ -82,10 +82,22 @@ arquivos_imagens_input.addEventListener('change', function(e){
             imagem.src = alvoLeitor.result;
             imagem.classList.add('imagem');
 
-            console.log(alvoLeitor.result);
+            upload_imagens.insertBefore(imagem, btn_upload);
         })
 
         leitor.readAsDataURL(file);
+    }
+})
+
+document.addEventListener('click', function(e){
+    var AlvoInicial = e.composedPath();
+
+    if(AlvoInicial[0] == '[object HTMLImageElement]' && AlvoInicial[0].classList.contains('imagem')){
+        var duplicata = document.createElement('img');
+        duplicata.src = AlvoInicial[0].src;
+        duplicata.classList.add('clones');
+        document.body.append(duplicata);
+        console.log(duplicata.src);
     }
 })
 
