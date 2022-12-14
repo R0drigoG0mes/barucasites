@@ -213,3 +213,11 @@ h2{
 .selecionado{
     box-shadow: 0px 0px 5px turquoise;
 }
+
+.exibirValor{
+    display: inline-block;
+    padding: 3px;
+    background-color: white;
+    margin: 5px 0px;
+    font-family: consolas;
+}

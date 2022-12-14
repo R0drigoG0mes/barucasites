@@ -42,6 +42,13 @@ const SiteCriado = document.getElementById("SiteCriado");
 
 // ------------ CONSTANTES -----------------
 
+// ------------ PROPRIEDADES ----------------
+
+const propriedade_Largura = document.getElementById("propriedade_Largura");
+const propriedade_Altura = document.getElementById("propriedade_Altura");
+
+// ------------ PROPRIEDADES ----------------
+
 // ------------ TOUCH ---------------
 
 document.addEventListener("touchmove", function(e){
@@ -159,7 +166,36 @@ SiteCriado.addEventListener("click", function(e){
     [...filhosDoMain].forEach(elemento =>{
         elemento.classList.remove('selecionado');
     })
+
     caminhoDoClique3[0].classList.add('selecionado');
+
+    var largura = caminhoDoClique3[0].style.width;
+
+    if(largura == ''){
+        largura = getComputedStyle(caminhoDoClique3[0]).width;
+    }
+
+    propriedade_Largura.textContent = largura;
+})
+
+    // ========================================
+
+propriedade_Largura.addEventListener("focusout", function(e){
+    if(!propriedade_Largura.textContent.endsWith("px")){
+        propriedade_Largura.textContent += 'px';
+    }
+
+    var largura = propriedade_Largura.textContent;
+
+})
+
+propriedade_Altura.addEventListener("focusout", function(e){
+    if(!propriedade_Altura.textContent.endsWith("px")){
+        propriedade_Altura.textContent += 'px';
+    }
+
+    var altura = propriedade_Altura.textContent;
+
 })
 
 // ------------------ PROPRIEDADES ----------
