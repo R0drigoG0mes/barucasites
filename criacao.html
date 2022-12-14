@@ -14,7 +14,7 @@
     <label for="arquivo_img" class="upload-img" style="display: none;"><span class="icon-arrow-up"></span><input type="file" name="" id="arquivo_img" style="display: none;" accept="image/*">
     </label>
     <div id="ferramentas">
-        <h2>Ferramentas</h2>
+        <h2>Ferramentas <span class="icon-cross" id="fecharFerramentas"></span></h2>
         <hr>
         <ul id="lista_ferramentas">
 
@@ -31,6 +31,7 @@
                         <span class="icon-circle-down"></span>
 
                         <div id="upload_imagens" style="display: none;">
+                            <p id="SemImagens">Não há imagens</p>
                             <button id="btn_upload">Upload <span class="icon-arrow-up"></span></button>
                         </div>
                     </li>
@@ -188,6 +189,14 @@
         <hr>
         <a href="index.html"><span class="icon-home3"></span> Início</a>
     </div>
+    <div id="propriedades">
+        <h2>Propriedades <span class="icon-cross" id="fecharPropriedades"></span></h2>
+        <hr>
+        <p id="SemSelecionarElemento">Selecione Um elemento do seu site para ver ou alterar suas propriedades.</p>
+        <img src="imagens/SelecionarElemento_500.svg" alt="Garoto adicioando post em blog">
+    </div>
+    <main id="SiteCriado">
 
+    </main>
 </body>
 </html>

@@ -48,6 +48,24 @@
     }
 }
 
+@keyframes surgirDireita {
+    0%{
+
+    }
+    100%{
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+@keyframes sumirDireita {
+    0%{
+        transform: translate3d(-100%, 0, 0);
+    }
+    100%{
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
 /* ANIMAÇÕES FIM */
 
 /* ICONES */
@@ -60,7 +78,39 @@
     font-size: .75em;
 }
 
+.icon-cross{
+    color: white;
+    background-color: red;
+    padding: 3px;
+    font-size: .8em;
+    position: absolute;
+    height: 100%;
+}
+
+#ferramentas h2 .icon-cross{
+    right: 0px;
+}
+
+#propriedades h2 .icon-cross{
+    left: 0px;
+}
+
 /* ICONES FIM */
+
+/* AVISOS SEM INTERAÇÃO */
+
+#SemImagens{
+    text-decoration: 2px underline #ccc;
+    font-size: .8em;
+}
+
+#SemSelecionarElemento{
+    font-size: .9em;
+    text-align: center;
+    padding: 10px 3px;
+}
+
+/* AVISOS SEM INTERAÇÃO */
 
 #ferramentas{
     background-color: #ddd;
@@ -72,7 +122,21 @@
     text-align: center;
     font-family: var(--sans-serif);
     overflow-y: auto;
-    
+}
+
+#ferramentas h2{
+    text-align: left;
+    padding-left: 15px;
+}
+
+#propriedades h2{
+    text-align: right;
+    padding-right: 7px;
+}
+
+h2{
+    font-size: 1.2em;
+    position: relative;
 }
 
 #lista_ferramentas{
@@ -86,7 +150,7 @@
 }
 
 .laranja{
-    text-decoration: 2px underline orange!important;
+    text-decoration: 2px underline #ffa500!important;
 }
 
 #lista_ferramentas li ul li{
@@ -132,4 +196,20 @@
 .clones{
     max-width: 100vw;
     max-height: 100vh;
+}
+
+#propriedades{
+    background-color: #ddd;
+    position: fixed;
+    right: -40%;
+    height: 100%;
+    width: 40%;
+    color: black;
+    text-align: center;
+    font-family: var(--sans-serif);
+    overflow-y: auto;
+}
+
+.selecionado{
+    box-shadow: 0px 0px 5px turquoise;
 }
