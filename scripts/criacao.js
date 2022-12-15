@@ -25,6 +25,7 @@ var filhosDoMain = [];
 
 var CaixaFerramentasAberta = false;
 var CaixaPropriedadesAberta = false;
+var ElementoSelecionado;
 
 // -------------- VARIÁVEIS ------------------
 
@@ -49,6 +50,8 @@ const listaPropriedades = document.getElementById("listaPropriedades");
 
 const propriedade_Largura = document.getElementById("propriedade_Largura");
 const propriedade_Altura = document.getElementById("propriedade_Altura");
+const propriedade_EixoX = document.getElementById("propriedade_EixoX");
+const propriedade_EixoY = document.getElementById("propriedade_EixoY");
 
 // ------------ PROPRIEDADES ----------------
 
@@ -153,7 +156,7 @@ document.addEventListener('click', function(e){
         duplicata.classList.add('clones');
         var PerguntaAdicionar = confirm('Quer adicionar essa imagem no seu site?')
         if(PerguntaAdicionar == true){
-            SiteCriado.appendChild(duplicata)
+            SiteCriado.appendChild(duplicata);
         }
     }
 })
@@ -184,31 +187,43 @@ document.addEventListener("click", function(e){
             elemento.classList.remove('selecionado');
         })
 
+        // ------------------ SELECIONAR ELEMENTO ---------------
+
         if(caminhoDoClique3[0] != SiteCriado){
             caminhoDoClique3[0].classList.add('selecionado');
         }
 
-            // ---------- REDIMENSIONAR - ALTURA - LARGURA --------
+        ElementoSelecionado = caminhoDoClique3[0];
 
-        var largura = caminhoDoClique3[0].style.width;
+        // ------------------ SELECIONAR ELEMENTO ---------------
 
-        if(largura == ''){
+        // ---------- REDIMENSIONAR - ALTURA - LARGURA --------
+
+        var largura = caminhoDoClique3[0].style.width.value;
+
+        if(largura == '' || largura == undefined){
             largura = getComputedStyle(caminhoDoClique3[0]).width;
         }
 
         propriedade_Largura.textContent = largura;
 
-        var altura = caminhoDoClique3[0].style.width;
+        var altura = caminhoDoClique3[0].style.width.value;
 
-        if(altura == ''){
+        if(altura == '' || altura == undefined){
             altura = getComputedStyle(caminhoDoClique3[0]).height;
         }
 
         propriedade_Altura.textContent = altura;
 
         // ---------- REDIMENSIONAR - ALTURA - LARGURA --------
+
+        // ----------- POSICIONAR ---------------------------
+
+        console.log(caminhoDoClique3[0].style.top);
+
+        // ----------- POSICIONAR ---------------------------
     }
-    else{
+    else if(Ele_é_o_pai == false && !caminhoDoClique3[0].classList.contains('exibirValor')){
         listaPropriedades.style.display = 'none';
         AvisoSemSelecionarElemento.style.display = 'block';
         ImagemSemSelecionarElemento.style.display = 'block';
@@ -229,6 +244,8 @@ document.addEventListener("click", function(e){
 
     var largura = propriedade_Largura.textContent;
 
+    ElementoSelecionado.style.width = largura;
+
 })
 
 propriedade_Altura.addEventListener("focusout", function(e){
@@ -238,6 +255,7 @@ propriedade_Altura.addEventListener("focusout", function(e){
 
     var altura = propriedade_Altura.textContent;
 
+    ElementoSelecionado.style.height = altura;
 })
 
 // ------------------ PROPRIEDADES ----------

@@ -241,3 +241,19 @@ h2{
     margin: 5px 0px;
     font-family: consolas;
 }
+
+#listaPropriedades{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 20px;
+    gap: 5px;
+}
+
+.LinhaDeProrpiedade{
+    background-color: #ccc;
+    margin: 3px 0px;
+}
+
+main{
+    overflow-x: hidden;
+}
