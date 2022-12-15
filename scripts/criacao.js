@@ -199,29 +199,27 @@ document.addEventListener("click", function(e){
 
         // ---------- REDIMENSIONAR - ALTURA - LARGURA --------
 
-        var largura = caminhoDoClique3[0].style.width.value;
+        var largura = caminhoDoClique3[0].getBoundingClientRect().width;
 
-        if(largura == '' || largura == undefined){
-            largura = getComputedStyle(caminhoDoClique3[0]).width;
-        }
+        propriedade_Largura.textContent = largura = 'px';
 
-        propriedade_Largura.textContent = largura;
+        var altura = caminhoDoClique3[0].getBoundingClientRect().height;
 
-        var altura = caminhoDoClique3[0].style.width.value;
-
-        if(altura == '' || altura == undefined){
-            altura = getComputedStyle(caminhoDoClique3[0]).height;
-        }
-
-        propriedade_Altura.textContent = altura;
+        propriedade_Altura.textContent = altura + 'px';
 
         // ---------- REDIMENSIONAR - ALTURA - LARGURA --------
 
-        // ----------- POSICIONAR ---------------------------
+        // ----------- POSICIONAR - EIXO X E EIXO Y-------
 
-        console.log(caminhoDoClique3[0].style.top);
+        var eixoX = caminhoDoClique3[0].getBoundingClientRect().x;
 
-        // ----------- POSICIONAR ---------------------------
+        propriedade_EixoX.textContent = eixoX;
+
+        var eixoY = caminhoDoClique3[0].getBoundingClientRect().y;
+
+        propriedade_EixoY.textContent = eixoY;
+
+        // ----------- POSICIONAR - EIXO X E EIXO Y-------
     }
     else if(Ele_é_o_pai == false && !caminhoDoClique3[0].classList.contains('exibirValor')){
         listaPropriedades.style.display = 'none';
@@ -234,9 +232,9 @@ document.addEventListener("click", function(e){
     }
 })
 
-    // ========================================
+// =================== APLICAR MUDANÇAS NO ELEMENTO =====================
 
-    propriedade_Largura.addEventListener("focusout", function(e){
+propriedade_Largura.addEventListener("focusout", function(e){
 
     if(!propriedade_Largura.textContent.endsWith("px")){
         propriedade_Largura.textContent += 'px';
@@ -256,6 +254,20 @@ propriedade_Altura.addEventListener("focusout", function(e){
     var altura = propriedade_Altura.textContent;
 
     ElementoSelecionado.style.height = altura;
+})
+
+propriedade_EixoX.addEventListener("focusout", function(e){
+
+    var eixoX = propriedade_EixoX.textContent;
+
+    // ElementoSelecionado.x = eixoX;
+})
+
+propriedade_EixoY.addEventListener("focusout", function(e){
+
+    var eixoY = propriedade_EixoY.textContent;
+
+    // ElementoSelecionado.y = eixoY;
 })
 
 // ------------------ PROPRIEDADES ----------
