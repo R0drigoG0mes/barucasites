@@ -39,10 +39,13 @@ const label = document.querySelector('.upload-img');
 const imagensParaAdicionarNoSite = document.querySelector('.imagem');
 const AvisoSemImagens = document.getElementById("SemImagens");
 const SiteCriado = document.getElementById("SiteCriado");
+const AvisoSemSelecionarElemento = document.getElementById("SemSelecionarElemento");
+const ImagemSemSelecionarElemento = document.getElementById("SemSelecionarElemento2");
 
 // ------------ CONSTANTES -----------------
 
 // ------------ PROPRIEDADES ----------------
+const listaPropriedades = document.getElementById("listaPropriedades");
 
 const propriedade_Largura = document.getElementById("propriedade_Largura");
 const propriedade_Altura = document.getElementById("propriedade_Altura");
@@ -159,28 +162,67 @@ document.addEventListener('click', function(e){
 
 // ------------------ PROPRIEDADES ----------
 
-SiteCriado.addEventListener("click", function(e){
+document.addEventListener("click", function(e){
+
     var caminhoDoClique3 = e.composedPath();
     filhosDoMain = SiteCriado.getElementsByTagName("*");
+    var Ele_é_o_pai = false;
 
-    [...filhosDoMain].forEach(elemento =>{
-        elemento.classList.remove('selecionado');
-    })
+    [...filhosDoMain].forEach(filho => {
+        if(caminhoDoClique3[0] == filho){
+            Ele_é_o_pai = true;
+        }
+    });
 
-    caminhoDoClique3[0].classList.add('selecionado');
+    if(Ele_é_o_pai == true){
 
-    var largura = caminhoDoClique3[0].style.width;
+        listaPropriedades.style.display = 'block';
+        AvisoSemSelecionarElemento.style.display = 'none';
+        ImagemSemSelecionarElemento.style.display = 'none';
 
-    if(largura == ''){
-        largura = getComputedStyle(caminhoDoClique3[0]).width;
+        [...filhosDoMain].forEach(elemento =>{
+            elemento.classList.remove('selecionado');
+        })
+
+        if(caminhoDoClique3[0] != SiteCriado){
+            caminhoDoClique3[0].classList.add('selecionado');
+        }
+
+            // ---------- REDIMENSIONAR - ALTURA - LARGURA --------
+
+        var largura = caminhoDoClique3[0].style.width;
+
+        if(largura == ''){
+            largura = getComputedStyle(caminhoDoClique3[0]).width;
+        }
+
+        propriedade_Largura.textContent = largura;
+
+        var altura = caminhoDoClique3[0].style.width;
+
+        if(altura == ''){
+            altura = getComputedStyle(caminhoDoClique3[0]).height;
+        }
+
+        propriedade_Altura.textContent = altura;
+
+        // ---------- REDIMENSIONAR - ALTURA - LARGURA --------
     }
+    else{
+        listaPropriedades.style.display = 'none';
+        AvisoSemSelecionarElemento.style.display = 'block';
+        ImagemSemSelecionarElemento.style.display = 'block';
 
-    propriedade_Largura.textContent = largura;
+        [...filhosDoMain].forEach(elemento =>{
+            elemento.classList.remove('selecionado');
+        })
+    }
 })
 
     // ========================================
 
-propriedade_Largura.addEventListener("focusout", function(e){
+    propriedade_Largura.addEventListener("focusout", function(e){
+
     if(!propriedade_Largura.textContent.endsWith("px")){
         propriedade_Largura.textContent += 'px';
     }

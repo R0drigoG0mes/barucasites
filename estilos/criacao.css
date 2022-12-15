@@ -66,6 +66,24 @@
     }
 }
 
+@keyframes SombraAnimada {
+    0%{
+        box-shadow: 0px 0px 5px orange;
+    }
+    25%{
+        box-shadow: 0px 0px 8px orange;
+    }
+    50%{
+        box-shadow: 0px 0px 10px orange;
+    }
+    75%{
+        box-shadow: 0px 0px 8px orange;
+    }
+    100%{
+        box-shadow: 0px 0px 5px orange;
+    }
+}
+
 /* ANIMAÇÕES FIM */
 
 /* ICONES */
@@ -211,7 +229,9 @@ h2{
 }
 
 .selecionado{
-    box-shadow: 0px 0px 5px turquoise;
+    border: 2px dashed var(--roxo_logo);
+    box-shadow: 0px 0px 5px orange;
+    animation: SombraAnimada 1.7s infinite ease;
 }
 
 .exibirValor{
