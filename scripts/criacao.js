@@ -1,14 +1,18 @@
 // ---------- FERRAMENTAS ------------
 const caixaFerramentas = document.getElementById("ferramentas");
 
-const arquivos_li = document.getElementById("arquivos_li");
-const detalhes_li = document.getElementById("detalhes_li");
-
 // ---------- FERRAMENTAS ------------
 
 // ---------- PROPRIEDADES ------------
 
 const caixaPropriedades = document.getElementById("propriedades");
+
+const listaPropriedades = document.getElementById("listaPropriedades");
+
+const propriedade_Largura = document.getElementById("propriedade_Largura");
+const propriedade_Altura = document.getElementById("propriedade_Altura");
+const propriedade_EixoX = document.getElementById("propriedade_EixoX");
+const propriedade_EixoY = document.getElementById("propriedade_EixoY");
 
 // ---------- PROPRIEDADES ------------
 
@@ -31,8 +35,6 @@ var ElementoSelecionado;
 
 // ------------ CONSTANTES -----------------
 
-const arquivos_imagens = document.getElementById("arquivos_imagens");
-const caixa_imagens = document.getElementById("caixa-imagens");
 const upload_imagens = document.getElementById("upload_imagens");
 const arquivos_imagens_input = document.getElementById("arquivo_img");
 const btn_upload = document.getElementById("btn_upload");
@@ -45,16 +47,6 @@ const ImagemSemSelecionarElemento = document.getElementById("SemSelecionarElemen
 
 // ------------ CONSTANTES -----------------
 
-// ------------ PROPRIEDADES ----------------
-const listaPropriedades = document.getElementById("listaPropriedades");
-
-const propriedade_Largura = document.getElementById("propriedade_Largura");
-const propriedade_Altura = document.getElementById("propriedade_Altura");
-const propriedade_EixoX = document.getElementById("propriedade_EixoX");
-const propriedade_EixoY = document.getElementById("propriedade_EixoY");
-
-// ------------ PROPRIEDADES ----------------
-
 // ------------ TOUCH ---------------
 
 document.addEventListener("touchmove", function(e){
@@ -62,50 +54,47 @@ document.addEventListener("touchmove", function(e){
 
         toquesX.unshift(touch.pageX);
 
-        if(toquesX[0] > toquesX[1] && toquesX[1] > toquesX[2] && toquesX[2] > toquesX[3] && CaixaPropriedadesAberta == false){
+        var comparar = toquesX[10] + 75;
+        var comparar2 = toquesX[10] - 75;
+
+        if(toquesX[0] > toquesX[1] && toquesX[0] > comparar && toquesX[1] > toquesX[2] && CaixaPropriedadesAberta == false){
             caixaFerramentas.style.animation = "surgirEsquerda 1s linear forwards";
             CaixaFerramentasAberta = true;
         }
-        else if(toquesX[0] < toquesX[1] && toquesX[1] < toquesX[2] && toquesX[2] < toquesX[3] && CaixaFerramentasAberta == true){
-            caixaFerramentas.style.animation = "sumirEsquerda 1s linear forwards";
-            setTimeout(() => {CaixaFerramentasAberta = false}, 1100);
-            
-        }
-
-        else if(toquesX[0] < toquesX[1] && toquesX[1] < toquesX[2] && toquesX[2] < toquesX[3] && CaixaFerramentasAberta == false){
+        else if(toquesX[0] < toquesX[1]  && toquesX[0] < comparar2 && toquesX[1] < toquesX[2] && CaixaFerramentasAberta == false){
             caixaPropriedades.style.animation = "surgirDireita 1s linear forwards";
             CaixaPropriedadesAberta = true;
-        }
-        else if(toquesX[0] > toquesX[1] && toquesX[1] > toquesX[2] && toquesX[2] > toquesX[3] && CaixaPropriedadesAberta == true){
-            caixaPropriedades.style.animation = "sumirDireita 1s linear forwards";
-            setTimeout(() => {CaixaPropriedadesAberta = false}, 1100);
         }
     })
 })
 
-// ------------ ABRIR E FECHAR PELO BOTÃO ---------------
+// ------------ FECHAR PELO BOTÃO ---------------
 
 document.addEventListener("click", function(e){
     var caminhoDoClique2 = e.composedPath();
 
     if(caminhoDoClique2[0] == '[object HTMLSpanElement]' && caminhoDoClique2[0].id == 'fecharFerramentas'){
         caixaFerramentas.style.animation = "sumirEsquerda 1s linear forwards";
-        setTimeout(() => {CaixaFerramentasAberta = false}, 1100);
+        setTimeout(() => {CaixaFerramentasAberta = false}, 500);
     }
     else if(caminhoDoClique2[0] == '[object HTMLSpanElement]' && caminhoDoClique2[0].id == 'fecharPropriedades'){
         caixaPropriedades.style.animation = "sumirDireita 1s linear forwards";
-        setTimeout(() => {CaixaPropriedadesAberta = false}, 1100);
+        setTimeout(() => {CaixaPropriedadesAberta = false}, 500);
     }
 })
 
-// ------------ ABRIR E FECHAR PELO BOTÃO ---------------
+// ------------ FECHAR PELO BOTÃO ---------------
 
 // ------------ TOUCH ---------------
 
 
-// ----------- CLIQUES ---------------
+
+                //# FERRAMENTAS INÍCIO
 
 caixaFerramentas.addEventListener("click", function(e){
+
+    // ----------- MENU ÁRVORE ---------------
+
     caminhoDoClique = e.composedPath();
     filhosDoClicado = caminhoDoClique[0].children;
 
@@ -115,9 +104,25 @@ caixaFerramentas.addEventListener("click", function(e){
     else if(caminhoDoClique[0] == '[object HTMLLIElement]' && filhosDoClicado[2] && filhosDoClicado[2].style.display == 'block'){
         filhosDoClicado[2].style.display = 'none';
     }
-})
 
-// ----------- CLIQUES ---------------
+    // ----------- MENU ÁRVORE ---------------
+
+    // ADICIONAR IMAGEM DUPLICADA NO SITE
+
+    else if(caminhoDoClique[0] == '[object HTMLImageElement]' && caminhoDoClique[0].classList.contains('imagem')){
+        var duplicata = document.createElement('img');
+        duplicata.src = caminhoDoClique[0].src;
+        duplicata.classList.add('clones');
+        var PerguntaAdicionar = confirm('Quer adicionar essa imagem no seu site?')
+        if(PerguntaAdicionar == true){
+            SiteCriado.appendChild(duplicata);
+        }
+    }
+
+    // ADICIONAR IMAGEM DUPLICADA NO SITE
+
+    
+})
 
 // ----------- UPLOAD IMAGENS --------
 
@@ -147,21 +152,11 @@ arquivos_imagens_input.addEventListener('change', function(e){
     }
 })
 
-document.addEventListener('click', function(e){
-    var AlvoInicial = e.composedPath();
-
-    if(AlvoInicial[0] == '[object HTMLImageElement]' && AlvoInicial[0].classList.contains('imagem')){
-        var duplicata = document.createElement('img');
-        duplicata.src = AlvoInicial[0].src;
-        duplicata.classList.add('clones');
-        var PerguntaAdicionar = confirm('Quer adicionar essa imagem no seu site?')
-        if(PerguntaAdicionar == true){
-            SiteCriado.appendChild(duplicata);
-        }
-    }
-})
-
 // ----------- UPLOAD IMAGENS --------
+
+                //# FERRAMENTAS END
+
+
 
 // ------------------ PROPRIEDADES ----------
 
@@ -201,7 +196,7 @@ document.addEventListener("click", function(e){
 
         var largura = caminhoDoClique3[0].getBoundingClientRect().width;
 
-        propriedade_Largura.textContent = largura = 'px';
+        propriedade_Largura.textContent = largura + 'px';
 
         var altura = caminhoDoClique3[0].getBoundingClientRect().height;
 
@@ -213,11 +208,11 @@ document.addEventListener("click", function(e){
 
         var eixoX = caminhoDoClique3[0].getBoundingClientRect().x;
 
-        propriedade_EixoX.textContent = eixoX;
+        propriedade_EixoX.textContent = eixoX + 'px';
 
         var eixoY = caminhoDoClique3[0].getBoundingClientRect().y;
 
-        propriedade_EixoY.textContent = eixoY;
+        propriedade_EixoY.textContent = eixoY + 'px';
 
         // ----------- POSICIONAR - EIXO X E EIXO Y-------
     }
@@ -229,6 +224,8 @@ document.addEventListener("click", function(e){
         [...filhosDoMain].forEach(elemento =>{
             elemento.classList.remove('selecionado');
         })
+
+        ElementoSelecionado = null;
     }
 })
 
@@ -240,34 +237,59 @@ propriedade_Largura.addEventListener("focusout", function(e){
         propriedade_Largura.textContent += 'px';
     }
 
-    var largura = propriedade_Largura.textContent;
+    if(ElementoSelecionado != null){
+        var largura = propriedade_Largura.textContent;
 
-    ElementoSelecionado.style.width = largura;
-
+        ElementoSelecionado.style.width = largura;
+    }
 })
 
 propriedade_Altura.addEventListener("focusout", function(e){
+
     if(!propriedade_Altura.textContent.endsWith("px")){
         propriedade_Altura.textContent += 'px';
     }
 
-    var altura = propriedade_Altura.textContent;
+    if(ElementoSelecionado != null){
+        var altura = propriedade_Altura.textContent;
 
-    ElementoSelecionado.style.height = altura;
+        ElementoSelecionado.style.height = altura;
+    }
 })
 
 propriedade_EixoX.addEventListener("focusout", function(e){
 
-    var eixoX = propriedade_EixoX.textContent;
+    if(!propriedade_EixoX.textContent.endsWith("px")){
+        propriedade_EixoX.textContent += 'px';
+    }
 
-    // ElementoSelecionado.x = eixoX;
+    if(ElementoSelecionado != null){
+        var eixoX = propriedade_EixoX.textContent;
+        var eixoY = propriedade_EixoY.textContent;
+    
+        ElementoSelecionado.style.position = 'absolute';
+    
+        ElementoSelecionado.style.top = eixoY;
+        ElementoSelecionado.style.left = eixoX;
+    }
 })
 
 propriedade_EixoY.addEventListener("focusout", function(e){
 
-    var eixoY = propriedade_EixoY.textContent;
+    if(!propriedade_EixoY.textContent.endsWith("px")){
+        propriedade_EixoY.textContent += 'px';
+    }
 
-    // ElementoSelecionado.y = eixoY;
+    if(ElementoSelecionado != null){
+        var eixoY = propriedade_EixoY.textContent;
+        var eixoX = propriedade_EixoX.textContent;
+    
+        ElementoSelecionado.style.position = 'absolute';
+    
+        ElementoSelecionado.style.left = eixoX;
+        ElementoSelecionado.style.top = eixoY;
+    }
+
 })
 
 // ------------------ PROPRIEDADES ----------

@@ -18,7 +18,7 @@
         <hr>
         <ul id="lista_ferramentas">
 
-            <li id="arquivos_li">
+            <li>
 
                 <span class="icon-files-empty"></span> 
                 Arquivos 
@@ -49,7 +49,7 @@
 
             </li>
 
-            <li id="detalhes_li">
+            <li>
 
                 <span class="icon-search"></span> 
                 Detalhes 
@@ -149,19 +149,19 @@
                 <span class="icon-circle-down"></span>
 
                 <ul style="display: none;">
-                    <li class="laranja">
+                    <li class="laranja" id="caixaComum_div">
                         Caixa <br>Comum
                     </li>
-                    <li class="laranja">
+                    <li class="laranja" id="caixaEmLinha_span">
                         Caixa Em <br>Linha
                     </li>
-                    <li class="laranja">
+                    <li class="laranja" id="caixaCabeçalho_header">
                         Cabeçalho
                     </li>
-                    <li class="laranja">
+                    <li class="laranja" id="caixaPrincipal_main">
                         Conteúdo <br>Principal
                     </li>
-                    <li class="laranja">
+                    <li class="laranja" id="caixaRodape_footer">
                         Rodapé
                     </li>
                 </ul>
@@ -184,8 +184,12 @@
 
         </ul>
         <hr>
-        <h2>Atalhos</h2>
-        <span class="icon-embed2"></span> Incorporar <span class="icon-circle-down"></span>
+        <div id="atalhos_Pai">
+            <h2>Atalhos</h2>
+            <hr>
+            <div class="atalhos"> Incorporar <span class="icon-embed2"></span></div>
+            <div class="atalhos"> Posicionar Livremente <span class="icon-enlarge"></span></div>
+        </div>
         <hr>
         <a href="index.html"><span class="icon-home3"></span> Início</a>
     </div>
