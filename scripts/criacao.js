@@ -121,7 +121,36 @@ caixaFerramentas.addEventListener("click", function(e){
 
     // ADICIONAR IMAGEM DUPLICADA NO SITE
 
-    
+    // ------------------ CAIXAS -----------------
+
+    else if(caminhoDoClique[0].id == 'caixaComum_div'){
+        var caixaDiv = document.createElement("div");
+        caixaDiv.style.backgroundColor = 'lightgray';
+        var PerguntaAdicionar = confirm('Quer adicinar essa caixa no seu site?');
+        if(PerguntaAdicionar == true){
+            var alturaDaDiv = prompt('Escreva a altura da caixa desejada:', '100px');
+            caixaDiv.style.height = alturaDaDiv;
+
+            if(ElementoSelecionado != null){
+                ElementoSelecionado.appendChild(caixaDiv);
+            }
+            else{
+                SiteCriado.appendChild(caixaDiv);
+            }
+        }
+    }
+    else if(caminhoDoClique[0].id == 'caixaEmLinha_span'){
+        var caixaSpan = document.createElement("span");
+        caixaSpan.style.backgroundColor = 'lightgray';
+        var PerguntaAdicionar = confirm('Quer adicinar essa caixa em linha no seu site?')
+        if(PerguntaAdicionar == true){
+            caixaSpan.textContent = 'Essa é a sua caixa em linha';
+            SiteCriado.appendChild(caixaSpan);
+        }
+    }
+
+    // ------------------ CAIXAS -----------------
+
 })
 
 // ----------- UPLOAD IMAGENS --------
