@@ -198,37 +198,42 @@
     <div id="propriedades">
         <h2>Propriedades <span class="icon-cross" id="fecharPropriedades"></span></h2>
         <hr>
-        <p id="SemSelecionarElemento">Selecione Um elemento do seu site para ver ou alterar suas propriedades.</p>
+        <p id="SemSelecionarElemento">Selecione Um elemento do seu site.</p>
         <img id="SemSelecionarElemento2" src="imagens/SelecionarElemento_500.svg" alt="Garoto adicioando post em blog">
 
         <ul id="listaPropriedades" style="display: none;">
             <li>
                 <h3 class="titulo-propriedade">Redimensionar</h3>
-                <div class="LinhaDeProrpiedade">
+                <div class="LinhaDePropriedade">
                     <span>Largura:</span>
                     <span id="propriedade_Largura" class="exibirValor" contenteditable="true">px</span>
                 </div>
-                <div class="LinhaDeProrpiedade">
+                <div class="LinhaDePropriedade">
                     <span>Altura:</span>
                     <span id="propriedade_Altura" class="exibirValor" contenteditable="true">px</span>
                 </div>
             </li>
             <li>
                 <h3 class="titulo-propriedade">Posicionar</h3>
-                <div class="LinhaDeProrpiedade">
+                <div class="LinhaDePropriedade">
                     <span>Eixo X:</span>
                     <span id="propriedade_EixoX" class="exibirValor" contenteditable="true">px</span>
                 </div>
-                <div class="LinhaDeProrpiedade">
+                <div class="LinhaDePropriedade">
                     <span>Eixo Y:</span>
                     <span id="propriedade_EixoY" class="exibirValor" contenteditable="true">px</span>
                 </div>
             </li>
             <li>
                 <h3 class="titulo-propriedade">Cor de Fundo</h3>
-                <div class="LinhaDePropriedade">
-                    <span>Cor:</span>
-                    <span id="propriedadeCorDeFundo" class="exibirValor" contenteditable="true"></span>
+                <div class="LinhaDePropriedade respiro">
+                    <select id="TiposDeCor" class="TipoDeValor">
+                        <option value="hex">Hex</option>
+                        <option value="rgb">RGB</option>
+                        <option value="nome">Nome</option>
+                    </select>
+                    <span id="propriedade_CorDeFundo" class="exibirValor" contenteditable="true"></span>
+                    <input type="color" id="EscolherCor">
                 </div>
             </li>
         </ul>

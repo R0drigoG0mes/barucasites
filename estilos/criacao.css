@@ -255,14 +255,13 @@ h2{
     font-family: consolas;
 }
 
-#listaPropriedades{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: 20px;
-    gap: 5px;
+.TipoDeValor{
+    font-family: consolas;
+    font-size: 1em;
+    font-weight: bold;
 }
 
-.LinhaDeProrpiedade{
+.LinhaDePropriedade{
     background-color: #ccc;
     margin: 3px 0px;
 }
@@ -292,4 +291,12 @@ main{
     font-size: .9em;
     width: 90%;
     border-radius: 10px;
+}
+
+#propriedade_CorDeFundo{
+    display: block;
+}
+
+.respiro{
+    padding: 3px 0px;
 }
