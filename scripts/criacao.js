@@ -125,7 +125,8 @@ caixaFerramentas.addEventListener("click", function(e){
 
     else if(caminhoDoClique[0].id == 'caixaComum_div'){
         var caixaDiv = document.createElement("div");
-        caixaDiv.style.backgroundColor = 'lightgray';
+        caixaDiv.style.backgroundColor = '#eee';
+        caixaDiv.textContent = 'Essa é a sua caixa comum';
         var PerguntaAdicionar = confirm('Quer adicinar essa caixa no seu site?');
         if(PerguntaAdicionar == true){
             var alturaDaDiv = prompt('Escreva a altura da caixa desejada:', '100px');
@@ -141,15 +142,89 @@ caixaFerramentas.addEventListener("click", function(e){
     }
     else if(caminhoDoClique[0].id == 'caixaEmLinha_span'){
         var caixaSpan = document.createElement("span");
-        caixaSpan.style.backgroundColor = 'lightgray';
-        var PerguntaAdicionar = confirm('Quer adicinar essa caixa em linha no seu site?')
+        caixaSpan.style.backgroundColor = '#eee';
+        caixaSpan.textContent = 'Essa é a sua caixa em linha';
+        var PerguntaAdicionar = confirm('Quer adicinar essa caixa em linha no seu site?');
         if(PerguntaAdicionar == true){
-            caixaSpan.textContent = 'Essa é a sua caixa em linha';
-            SiteCriado.appendChild(caixaSpan);
+
+            if(ElementoSelecionado != null){
+                ElementoSelecionado.appendChild(caixaSpan);
+            }
+            else{
+                SiteCriado.appendChild(caixaSpan);
+            }
+        }
+    }
+    else if(caminhoDoClique[0].id == 'caixaCabeçalho_header'){
+        var caixaHeader = document.createElement("header");
+        caixaHeader.style.backgroundColor = '#eee';
+        caixaHeader.textContent = 'Esse é o seu cabeçalho';
+        var PerguntaAdicionar = confirm('Quer adicinar esse cabeçalho no seu site?');
+        if(PerguntaAdicionar == true){
+            var alturaDoHeader = prompt('Escreva a altura do cabeçalho desejado:', '70px');
+            caixaHeader.style.height = alturaDoHeader;
+
+            if(ElementoSelecionado != null){
+                ElementoSelecionado.appendChild(caixaHeader);
+            }
+            else{
+                SiteCriado.appendChild(caixaHeader);
+            }
+        }
+    }
+    else if(caminhoDoClique[0].id == 'caixaPrincipal_main'){
+        var caixaMain = document.createElement("main");
+        caixaMain.style.backgroundColor = '#eee';
+        caixaMain.textContent = 'Essa é a sua caixa de conteúdo principal';
+        var PerguntaAdicionar = confirm('Quer adicinar essa caixa de conteúdo principal no seu site?');
+        if(PerguntaAdicionar == true){
+            var alturaDoMain = prompt('Escreva a altura da caixa de conteúdo principal desejada:', '70px')
+            caixaMain.style.height = alturaDoMain;
+
+            if(ElementoSelecionado != null){
+                ElementoSelecionado.appendChild(caixaMain);
+            }
+            else{
+                SiteCriado.appendChild(caixaMain);
+            }
+        }
+    }
+    else if(caminhoDoClique[0].id == 'caixaRodape_footer'){
+        var caixaFooter = document.createElement("footer");
+        caixaFooter.style.backgroundColor = '#eee';
+        caixaFooter.textContent = 'Esse é o seu rodapé';
+        var PerguntaAdicionar = confirm('Quer adicinar esse rodapé no seu site?');
+        if(PerguntaAdicionar == true){
+            var alturaDoFooter = prompt('Escreva a altura do rodapé desejado:', '70px')
+            caixaFooter.style.height = alturaDoFooter;
+
+            if(ElementoSelecionado != null){
+                ElementoSelecionado.appendChild(caixaFooter);
+            }
+            else{
+                SiteCriado.appendChild(caixaFooter);
+            }
         }
     }
 
     // ------------------ CAIXAS -----------------
+
+    // ----------------- ATALHOS -----------------
+
+    // ----------------- DELETAR------------------
+
+    else if(caminhoDoClique[0].id == 'deletarElemento'){
+        if(ElementoSelecionado != null){
+            ElementoSelecionado.remove();
+        }
+        else{
+            alert('Selecione um elemento para deletá-lo.');
+        }
+    }
+
+    // ----------------- DELETAR------------------
+
+    // ----------------- ATALHOS -----------------
 
 })
 

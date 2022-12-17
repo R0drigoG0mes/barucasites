@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="estilos/criacao.css">
     <link rel="stylesheet" href="icones_criacao/style.css">
     <link rel="stylesheet" href="estilos/medias_queries/criacao_medias.css">
+    <link rel="shortcut icon" href="imagens/favicon.png" type="image/x-icon">
     <title>Crie seu site</title>
 </head>
 <body>
@@ -189,6 +190,7 @@
             <hr>
             <div class="atalhos"> Incorporar <span class="icon-embed2"></span></div>
             <div class="atalhos"> Posicionar Livremente <span class="icon-enlarge"></span></div>
+            <div class="atalhos" id="deletarElemento"> Deletar <span class="icon-bin"></span></div>
         </div>
         <hr>
         <a href="index.html"><span class="icon-home3"></span> Início</a>
@@ -201,7 +203,7 @@
 
         <ul id="listaPropriedades" style="display: none;">
             <li>
-                Redimensionar<br>
+                <h3 class="titulo-propriedade">Redimensionar</h3>
                 <div class="LinhaDeProrpiedade">
                     <span>Largura:</span>
                     <span id="propriedade_Largura" class="exibirValor" contenteditable="true">px</span>
@@ -212,7 +214,7 @@
                 </div>
             </li>
             <li>
-                Posicionar<br>
+                <h3 class="titulo-propriedade">Posicionar</h3>
                 <div class="LinhaDeProrpiedade">
                     <span>Eixo X:</span>
                     <span id="propriedade_EixoX" class="exibirValor" contenteditable="true">px</span>
@@ -220,6 +222,13 @@
                 <div class="LinhaDeProrpiedade">
                     <span>Eixo Y:</span>
                     <span id="propriedade_EixoY" class="exibirValor" contenteditable="true">px</span>
+                </div>
+            </li>
+            <li>
+                <h3 class="titulo-propriedade">Cor de Fundo</h3>
+                <div class="LinhaDePropriedade">
+                    <span>Cor:</span>
+                    <span id="propriedadeCorDeFundo" class="exibirValor" contenteditable="true"></span>
                 </div>
             </li>
         </ul>
