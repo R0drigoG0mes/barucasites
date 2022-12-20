@@ -13,9 +13,10 @@ const propriedade_Largura = document.getElementById("propriedade_Largura");
 const propriedade_Altura = document.getElementById("propriedade_Altura");
 const propriedade_EixoX = document.getElementById("propriedade_EixoX");
 const propriedade_EixoY = document.getElementById("propriedade_EixoY");
-// const propriedade_CorDeFundo = document.getElementById("propriedade_CorDeFundo");
-// const TipoDeCor = document.getElementById("TiposDeCor");
 const propriedade_CorDeFundoInput = document.getElementById("EscolherCor");
+const propriedade_CorDeFundoHex = document.getElementById("CorHex");
+const propriedade_Texto = document.getElementById("propriedade_Texto");
+const propriedade_Fonte = document.getElementById("propriedade_Fonte");
 
 // ---------- PROPRIEDADES ------------
 
@@ -364,9 +365,23 @@ document.addEventListener("click", function(e){
 
         propriedade_CorDeFundoInput.value = corFinal;
 
+        propriedade_CorDeFundoHex.value = corFinal;
+
         // ----------- COR DE FUNDO ----------------------
+
+        // ----------- TEXTO ----------------------
+
+        propriedade_Texto.value = ElementoSelecionado.textContent;
+
+        // ----------- TEXTO ----------------------
+
+        // ----------- FONTE ----------------------
+
+        console.log(navigator);
+
+        // ----------- FONTE ----------------------
     }
-    else if(Ele_é_o_pai == false && !caminhoDoClique3[0].classList.contains('exibirValor') && !caminhoDoClique3[0].classList.contains('TipoDeValor') && caminhoDoClique3[0].id != 'EscolherCor'){
+    else if(Ele_é_o_pai == false && !caminhoDoClique3[0].classList.contains('exibirValor') && !caminhoDoClique3[0].classList.contains('Prop')){
         listaPropriedades.style.display = 'none';
         AvisoSemSelecionarElemento.style.display = 'block';
         ImagemSemSelecionarElemento.style.display = 'block';
@@ -445,6 +460,33 @@ propriedade_CorDeFundoInput.addEventListener("change", function(e){
     ElementoSelecionado.style.backgroundColor = propriedade_CorDeFundoInput.value;
 })
 
+propriedade_CorDeFundoHex.addEventListener("change", function(e){
+    ElementoSelecionado.style.backgroundColor = propriedade_CorDeFundoHex.value;
+})
+
+propriedade_Texto.addEventListener("change", function(e){
+    ElementoSelecionado.textContent = propriedade_Texto.value;
+})
+
 // =================== APLICAR MUDANÇAS NO ELEMENTO =====================
 
 // ------------------ PROPRIEDADES ----------
+
+    // document.getElementById('carregar-fonts').onclick = fontes;
+
+    // async function fontes() {
+    //     if ('fonts' in navigator) {
+    //         try {
+    //             const fonts = await navigator.fonts.query();
+
+    //             for (let i = 0, j = fonts.length; i < j; i++) {
+    //                 console.log(fonts[i].fullName);
+    //             }
+    //         } catch (ee) {
+    //             console.error(ee);
+    //         }
+    //     } 
+    //     else {
+    //         console.error('Seu navegador não tem suporte a navigator.fonts');
+    //     }
+    // }

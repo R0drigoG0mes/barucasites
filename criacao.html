@@ -15,7 +15,7 @@
     <label for="arquivo_img" class="upload-img" style="display: none;"><span class="icon-arrow-up"></span><input type="file" name="" id="arquivo_img" style="display: none;" accept="image/*">
     </label>
     <div id="ferramentas">
-        <h2>Ferramentas <span class="icon-cross" id="fecharFerramentas"></span></h2>
+        <h2>Ferramentas <span class="icon-cross Prop" id="fecharFerramentas"></span></h2>
         <hr>
         <ul id="lista_ferramentas">
 
@@ -191,43 +191,64 @@
             <div class="atalhos"> Incorporar <span class="icon-embed2"></span></div>
             <div class="atalhos"> Posicionar Livremente <span class="icon-enlarge"></span></div>
             <div class="atalhos" id="deletarElemento"> Deletar <span class="icon-bin"></span></div>
+            <div class="atalhos"> Limpar Texto <span class="icon-pencil"></span></div>
         </div>
         <hr>
         <a href="index.html"><span class="icon-home3"></span> Início</a>
     </div>
-    <div id="propriedades">
-        <h2>Propriedades <span class="icon-cross" id="fecharPropriedades"></span></h2>
+    <div id="propriedades" class="Prop">
+        <h2>Propriedades <span class="icon-cross Prop" id="fecharPropriedades"></span></h2>
         <hr>
         <p id="SemSelecionarElemento">Selecione Um elemento do seu site.</p>
         <img id="SemSelecionarElemento2" src="imagens/SelecionarElemento_500.svg" alt="Garoto adicioando post em blog">
 
-        <ul id="listaPropriedades" style="display: none;">
+        <ul id="listaPropriedades" style="display: none;" class="Prop">
             <li>
-                <h3 class="titulo-propriedade">Redimensionar</h3>
-                <div class="LinhaDePropriedade">
+                <h3 class="titulo-propriedade Prop">Redimensionar</h3>
+                <div class="LinhaDePropriedade Prop">
                     <span>Largura:</span>
                     <span id="propriedade_Largura" class="exibirValor" contenteditable="true">px</span>
                 </div>
-                <div class="LinhaDePropriedade">
+                <div class="LinhaDePropriedade Prop">
                     <span>Altura:</span>
                     <span id="propriedade_Altura" class="exibirValor" contenteditable="true">px</span>
                 </div>
             </li>
             <li>
-                <h3 class="titulo-propriedade">Posicionar</h3>
-                <div class="LinhaDePropriedade">
+                <h3 class="titulo-propriedade Prop">Posicionar</h3>
+                <div class="LinhaDePropriedade Prop">
                     <span>Eixo X:</span>
                     <span id="propriedade_EixoX" class="exibirValor" contenteditable="true">px</span>
                 </div>
-                <div class="LinhaDePropriedade">
+                <div class="LinhaDePropriedade Prop">
                     <span>Eixo Y:</span>
                     <span id="propriedade_EixoY" class="exibirValor" contenteditable="true">px</span>
                 </div>
             </li>
             <li>
-                <h3 class="titulo-propriedade">Cor de Fundo</h3>
-                <div class="LinhaDePropriedade respiro">
-                    <input type="color" id="EscolherCor">
+                <h3 class="titulo-propriedade Prop">Cor de Fundo</h3>
+                <div class="LinhaDePropriedade respiro Prop">
+                    <span>Manual:</span>
+                    <input type="color" id="EscolherCor" class="Prop">
+                </div>
+                <div class="LinhaDePropriedade respiro Prop">
+                    <span>Hex:</span>
+                    <input type="text" id="CorHex" class="Prop">
+                </div>
+            </li>
+            <li>
+                <h3 class="titulo-propriedade Prop">Texto</h3>
+                <div class="LinhaDePropriedade respiro Prop">
+                    <textarea id="propriedade_Texto" cols="17" rows="5" class="Prop"></textarea>
+                </div>
+            </li>
+            <li>
+                <h3 class="titulo-propriedade Prop">Fonte</h3>
+                <div class="LinhaDePropriedade respiro Prop">
+                    <input list="browsers" class="Prop" id="propriedade_Fonte"/>
+                    <datalist id="browsers" class="Prop">
+                    <option value="Chrome" class="Prop">
+                    </datalist>
                 </div>
             </li>
         </ul>
