@@ -13,9 +13,9 @@ const propriedade_Largura = document.getElementById("propriedade_Largura");
 const propriedade_Altura = document.getElementById("propriedade_Altura");
 const propriedade_EixoX = document.getElementById("propriedade_EixoX");
 const propriedade_EixoY = document.getElementById("propriedade_EixoY");
-const propriedade_CorDeFundo = document.getElementById("propriedade_CorDeFundo");
-const TipoDeCor = document.getElementById("TiposDeCor");
-const EscolherCorInput = document.getElementById("EscolherCor");
+// const propriedade_CorDeFundo = document.getElementById("propriedade_CorDeFundo");
+// const TipoDeCor = document.getElementById("TiposDeCor");
+const propriedade_CorDeFundoInput = document.getElementById("EscolherCor");
 
 // ---------- PROPRIEDADES ------------
 
@@ -325,25 +325,45 @@ document.addEventListener("click", function(e){
 
         // ----------- COR DE FUNDO ----------------------
 
-        var corFundo = caminhoDoClique3[0].style.backgroundColor;
+        const RGB_Bruto = caminhoDoClique3[0].style.backgroundColor;
 
-        if(corFundo.startsWith("#")){
-            TipoDeCor.selectedIndex = 0;
-            propriedade_CorDeFundo.style.fontSize = '1em';
-            propriedade_CorDeFundo.textContent = corFundo;
-        }
-        else if(corFundo.startsWith("rgb")){
-            TipoDeCor.selectedIndex = 1;
-            propriedade_CorDeFundo.style.fontSize = '.8em';
-            propriedade_CorDeFundo.textContent = corFundo;
-        }
-        else{
-            TipoDeCor.selectedIndex = 2;
-            propriedade_CorDeFundo.style.fontSize = '1em';
-            propriedade_CorDeFundo.textContent = corFundo;
-            propriedade_CorDeFundo.style.textTransform = 'capitalize';
-        }
-        
+        const limpeza2 = RGB_Bruto.replaceAll('rgb', '');
+        const limpeza3 = limpeza2.replaceAll(' ', '');
+        const limpeza4 = limpeza3.replaceAll(')', '.');
+        const limpeza5 = limpeza4.replaceAll('(', '');
+        const limpeza6 = limpeza5.replaceAll(',', ' ');
+
+        var todos = '';
+        var red = '';
+        var green = '';
+        var blue = '';
+        var contia = 0;
+
+        [...limpeza6].forEach(caractere => {
+            if(caractere != ' ' && caractere != '.'){
+                todos += caractere;
+            }
+            else if(contia == 0){
+                contia++;
+                red = todos;
+                todos = '';
+            }
+            else if(contia == 1){
+                contia++;
+                green = todos;
+                todos = '';
+            }
+            else if(contia == 2){
+                blue = todos;
+                todos = '';
+                contia = 0;
+            }
+        })
+
+        var corFinal = '#' + parseInt(red).toString(16) + parseInt(green).toString(16) + parseInt(blue).toString(16);
+
+        propriedade_CorDeFundoInput.value = corFinal;
+
         // ----------- COR DE FUNDO ----------------------
     }
     else if(Ele_é_o_pai == false && !caminhoDoClique3[0].classList.contains('exibirValor') && !caminhoDoClique3[0].classList.contains('TipoDeValor') && caminhoDoClique3[0].id != 'EscolherCor'){
@@ -421,30 +441,8 @@ propriedade_EixoY.addEventListener("focusout", function(e){
     }
 })
 
-propriedade_CorDeFundo.addEventListener("focusout", function(e){
-
-})
-
-EscolherCorInput.addEventListener("change", function(e){
-    ElementoSelecionado.style.backgroundColor = EscolherCorInput.value;
-})
-
-TipoDeCor.addEventListener('change', function(e){
-    if(TipoDeCor.selectedIndex == 0){
-        propriedade_CorDeFundo.textContent = '#';
-    }
-    else if(TipoDeCor.selectedIndex == 1){
-        propriedade_CorDeFundo.textContent = 'rgb(Vermelho, Verde, Azul)';
-    }
-    else if(TipoDeCor.selectedIndex == 2){
-        propriedade_CorDeFundo.textContent = '';
-    }
-})
-
-propriedade_CorDeFundo.addEventListener("focusout", function(e){
-    var cor = propriedade_CorDeFundo.textContent;
-
-    ElementoSelecionado.style.backgroundColor = cor;
+propriedade_CorDeFundoInput.addEventListener("change", function(e){
+    ElementoSelecionado.style.backgroundColor = propriedade_CorDeFundoInput.value;
 })
 
 // =================== APLICAR MUDANÇAS NO ELEMENTO =====================

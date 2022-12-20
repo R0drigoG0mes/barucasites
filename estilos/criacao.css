@@ -300,3 +300,25 @@ main{
 .respiro{
     padding: 3px 0px;
 }
+
+#EscolherCor{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#EscolherCor::-webkit-color-swatch{
+    border-radius: 15px;
+    border: none;
+}
+
+#EscolherCor::-moz-color-swatch{
+    border-radius: 15px;
+    border: none;
+}
+
