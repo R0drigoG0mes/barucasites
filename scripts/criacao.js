@@ -23,6 +23,7 @@ const propriedade_TamanhoFonte = document.getElementById("propriedade_TamanhoFon
 const propriedade_TamanhoDecoracaoTexto = document.getElementById("propriedade_TamanhoDecoracaoTexto");
 const propriedade_TipoDecoracaoTexto = document.getElementById("propriedade_TipoDecoracaoTexto");
 const propriedade_CorDecoracaoTexto = document.getElementById("propriedade_CorDecoracaoTexto");
+const propriedade_EstiloDecoracaoTexto = document.getElementById("propriedade_EstiloDecoracaoTexto");
 
 // ---------- PROPRIEDADES ------------
 
@@ -438,12 +439,12 @@ document.addEventListener("click", function(e){
 
         // ----------- ALINAHMENRO DO TEXTO ----------------------
 
-        // ----------- DECORAÇÃO - TAMANHO - TIPO - COR ----------------------
+        // ----------- DECORAÇÃO - ESTILO - TAMANHO - TIPO - COR ----------------------
 
         var TamanhoDecoracaoTexo = ElementoSelecionado.style.textDecorationThickness;
 
         if(TamanhoDecoracaoTexo == '' || TamanhoDecoracaoTexo == undefined){
-            TamanhoDecoracaoTexo = window.getComputedStyle(ElementoSelecionado).textDecorationThickness;
+            TamanhoDecoracaoTexo = '2px';
         }
 
         var CorDecoracaoTexto = ElementoSelecionado.style.textDecorationColor;
@@ -456,6 +457,12 @@ document.addEventListener("click", function(e){
 
         if(TipoDecoracaoText == '' || TipoDecoracaoText == undefined){
             TipoDecoracaoText = window.getComputedStyle(ElementoSelecionado).textDecorationStyle;
+        }
+
+        var EstiloDecoracaoTexto = ElementoSelecionado.style.textDecorationLine;
+
+        if(EstiloDecoracaoTexto == '' || EstiloDecoracaoTexto == undefined){
+            EstiloDecoracaoTexto = window.getComputedStyle(ElementoSelecionado).textDecorationLine;
         }
 
         const Filtragem2 = CorDecoracaoTexto.replaceAll('rgb', '');
@@ -503,9 +510,17 @@ document.addEventListener("click", function(e){
             }
         })
 
+        var TiposEstilosDecoracao = propriedade_EstiloDecoracaoTexto.children;
+
+        [...TiposEstilosDecoracao].forEach(estilo => {
+            if(estilo.value == EstiloDecoracaoTexto){
+                estilo.selected = true;
+            }
+        })
+
         propriedade_TamanhoDecoracaoTexto.value = TamanhoDecoracaoTexo;
 
-        // ----------- DECORAÇÃO - TAMANHO - TIPO - COR ----------------------
+        // ----------- DECORAÇÃO - ESTILO - TAMANHO - TIPO - COR ----------------------
 
         // ----------- FONTE ----------------------
 
@@ -673,6 +688,10 @@ propriedade_TipoDecoracaoTexto.addEventListener("change", function(e){
 
 propriedade_CorDecoracaoTexto.addEventListener("change", function(e){
     ElementoSelecionado.style.textDecorationColor = propriedade_CorDecoracaoTexto.value;
+})
+
+propriedade_EstiloDecoracaoTexto.addEventListener("change", function(e){
+    ElementoSelecionado.style.textDecorationLine = propriedade_EstiloDecoracaoTexto.value;
 })
 
 // =================== APLICAR MUDANÇAS NO ELEMENTO =====================

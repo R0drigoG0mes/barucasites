@@ -334,7 +334,6 @@ main{
 #propriedade_Texto{
     max-width: 80%;
     padding: 3px;
-    text-decoration: underline overline #FF3028;
 }
 
 #propriedade_Fonte{
@@ -382,10 +381,12 @@ main{
 #propriedade_CorDecoracaoTexto{
     width: 90%;
 }
+#propriedade_EstiloDecoracaoTexto{
+    width: 90%;
+    text-shadow: 1px 1px 10px black;
+}
 
 /* .próximas_prorpriedades{
-    text-decoration-line;
-    text-decoration:      ;
     text-shadow: ;
     box-shadow: ;
     text-indent: ;
