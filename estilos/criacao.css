@@ -152,6 +152,7 @@
     text-align: center;
     font-family: var(--sans-serif);
     overflow-y: auto;
+    overflow-x: hidden;
     z-index: 5;
 }
 
@@ -239,6 +240,7 @@ h2{
     text-align: center;
     font-family: var(--sans-serif);
     overflow-y: auto;
+    overflow-x: hidden;
     z-index: 5;
 }
 
@@ -340,10 +342,19 @@ main{
     max-width: 90%;
 }
 
+#propriedade_TamanhoFonte{
+    text-align: center;
+    padding: 2px;
+    max-width: 30%;
+}
+
+#propriedade_AlinhamentoTexto{
+    text-align: center;
+    padding: 2px;
+    max-width: 50%;
+}
+
 /* .próximas_prorpriedades{
-    font-family: ;
-    font-size: ;
-    text-align: ;
     font-variant: ;
     text-decoration: ;
     text-shadow: ;

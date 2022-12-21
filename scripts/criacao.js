@@ -16,8 +16,10 @@ const propriedade_EixoY = document.getElementById("propriedade_EixoY");
 const propriedade_CorDeFundoInput = document.getElementById("EscolherCor");
 const propriedade_CorDeFundoHex = document.getElementById("CorHex");
 const propriedade_Texto = document.getElementById("propriedade_Texto");
+const propriedade_AlinhamentoTexto = document.getElementById("propriedade_AlinhamentoTexto");
 const propriedade_Fonte = document.getElementById("propriedade_Fonte");
 const FontesDisponiveis = document.getElementById("FontesDisponiveis");
+const propriedade_TamanhoFonte = document.getElementById("propriedade_TamanhoFonte");
 
 // ---------- PROPRIEDADES ------------
 
@@ -227,6 +229,9 @@ caixaFerramentas.addEventListener("click", function(e){
             alert('Selecione um elemento para deletá-lo.');
         }
     }
+    else if(caminhoDoClique[0].id == 'incorporarElemento'){
+        propriedade_Fonte.click();
+    }
 
     // ----------------- DELETAR------------------
 
@@ -377,6 +382,24 @@ document.addEventListener("click", function(e){
 
         // ----------- TEXTO ----------------------
 
+        // ----------- ALINAHMENRO DO TEXTO ----------------------
+
+        var AlinhamentoAtual = ElementoSelecionado.style.textAlign;
+
+        if(AlinhamentoAtual == '' || AlinhamentoAtual == undefined){
+            AlinhamentoAtual = window.getComputedStyle(ElementoSelecionado).textAlign;
+        }
+
+        var OpcoesDeAlinhamento = propriedade_AlinhamentoTexto.children;
+
+        [...OpcoesDeAlinhamento].forEach(opcao => {
+            if(opcao.value == AlinhamentoAtual){
+                opcao.selected = true;
+            }
+        })
+
+        // ----------- ALINAHMENRO DO TEXTO ----------------------
+
         // ----------- FONTE ----------------------
 
         var fonte = ElementoSelecionado.style.fontFamily;
@@ -390,6 +413,18 @@ document.addEventListener("click", function(e){
         propriedade_Fonte.value = fontefinal.replaceAll('"', '');
 
         // ----------- FONTE ----------------------
+
+        // ----------- TAMANHO DA FONTE ----------------------
+
+        var TamanhoDaFonte = ElementoSelecionado.style.fontSize.value;
+
+        if(TamanhoDaFonte == '' || TamanhoDaFonte == undefined){
+            TamanhoDaFonte = window.getComputedStyle(ElementoSelecionado).fontSize;
+        }
+
+        propriedade_TamanhoFonte.value = TamanhoDaFonte;
+
+        // ----------- TAMANHO DA FONTE ----------------------
     }
     else if(Ele_é_o_pai == false && !caminhoDoClique3[0].classList.contains('exibirValor') && !caminhoDoClique3[0].classList.contains('Prop')){
         listaPropriedades.style.display = 'none';
@@ -508,5 +543,13 @@ async function logFontData() {
 propriedade_Fonte.addEventListener("change", function(e){
     ElementoSelecionado.style.fontFamily = propriedade_Fonte.value;
 })
+
+propriedade_TamanhoFonte.addEventListener("change", function(e){
+    ElementoSelecionado.style.fontSize = propriedade_TamanhoFonte.value;
+})
+
+propriedade_AlinhamentoTexto.addEventListener("change", function(e){
+    ElementoSelecionado.style.textAlign = propriedade_AlinhamentoTexto.value;
+});
 
 // =================== APLICAR MUDANÇAS NO ELEMENTO =====================

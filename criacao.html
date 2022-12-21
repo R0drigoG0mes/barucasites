@@ -228,11 +228,11 @@
             <li>
                 <h3 class="titulo-propriedade Prop">Cor de Fundo</h3>
                 <div class="LinhaDePropriedade respiro Prop">
-                    <span>Manual:</span>
+                    <span class="Prop">Manual:</span>
                     <input type="color" id="EscolherCor" class="Prop">
                 </div>
                 <div class="LinhaDePropriedade respiro Prop">
-                    <span>Hex:</span>
+                    <span class="Prop">Hex:</span>
                     <input type="text" id="CorHex" class="Prop">
                 </div>
             </li>
@@ -241,6 +241,18 @@
                 <div class="LinhaDePropriedade respiro Prop">
                     <textarea id="propriedade_Texto" cols="17" rows="5" class="Prop"></textarea>
                 </div>
+                <div class="LinhaDePropriedade respiro Prop">
+                    <span class="Prop">Alinhar:</span>
+                    <select id="propriedade_AlinhamentoTexto" class="Prop">
+                        <option value="center">Centro</option>
+                        <option value="right">Direita</option>
+                        <option value="left">Esquerda</option>
+                        <option value="justify">Justificado</option>
+                        <option value="end">Final</option>
+                        <option value="start">Começo</option>
+                        <option value="initial">Inicial</option>
+                    </select>
+                </div>
             </li>
             <li>
                 <h3 class="titulo-propriedade Prop">Fonte</h3>
@@ -248,6 +260,10 @@
                     <input list="FontesDisponiveis" class="Prop" id="propriedade_Fonte"/>
                     <datalist id="FontesDisponiveis" class="Prop">
                     </datalist>
+                </div>
+                <div class="LinhaDePropriedade respiro Prop">
+                    <span>Tamanho:</span>
+                    <input type="text" id="propriedade_TamanhoFonte" class="Prop">
                 </div>
             </li>
         </ul>
