@@ -17,6 +17,7 @@ const propriedade_CorDeFundoInput = document.getElementById("EscolherCor");
 const propriedade_CorDeFundoHex = document.getElementById("CorHex");
 const propriedade_Texto = document.getElementById("propriedade_Texto");
 const propriedade_Fonte = document.getElementById("propriedade_Fonte");
+const FontesDisponiveis = document.getElementById("FontesDisponiveis");
 
 // ---------- PROPRIEDADES ------------
 
@@ -34,6 +35,7 @@ var filhosDoMain = [];
 var CaixaFerramentasAberta = false;
 var CaixaPropriedadesAberta = false;
 var ElementoSelecionado;
+var FontesCarregadas = false;
 
 // -------------- VARIÁVEIS ------------------
 
@@ -377,7 +379,15 @@ document.addEventListener("click", function(e){
 
         // ----------- FONTE ----------------------
 
-        console.log(navigator);
+        var fonte = ElementoSelecionado.style.fontFamily;
+
+        if(fonte == ''){
+           fonte = window.getComputedStyle(ElementoSelecionado).fontFamily;
+        }
+
+        const fontefinal = fonte; 
+
+        propriedade_Fonte.value = fontefinal.replaceAll('"', '');
 
         // ----------- FONTE ----------------------
     }
@@ -468,25 +478,35 @@ propriedade_Texto.addEventListener("change", function(e){
     ElementoSelecionado.textContent = propriedade_Texto.value;
 })
 
+propriedade_Fonte.addEventListener("click", logFontData);
+
+async function logFontData() {
+    if(FontesCarregadas == false){
+        try {
+            const availableFonts = await window.queryLocalFonts();
+            for (const fontData of availableFonts){
+
+              var optionNova = document.createElement("option");
+              optionNova.classList.add('Prop');
+              optionNova.value = fontData.family;
+              optionNova.textContent = fontData.family;
+
+              var Filtragem = fontData.fullName;
+
+                if(!Filtragem.includes("Negrito") && !Filtragem.includes("Bold") && !Filtragem.includes("Italic") && !Filtragem.includes("Itálico") && !Filtragem.includes("Light") && !Filtragem.includes("Condensed") && !Filtragem.includes("Black") && !Filtragem.includes("Gothic") && !Filtragem.includes("Medium") && !Filtragem.includes("Mono")){
+                    FontesDisponiveis.appendChild(optionNova);
+                }
+            }
+            FontesCarregadas = true;
+          } 
+          catch (err){
+            console.error(err.name, err.message);
+          }
+    }
+}
+
+propriedade_Fonte.addEventListener("change", function(e){
+    ElementoSelecionado.style.fontFamily = propriedade_Fonte.value;
+})
+
 // =================== APLICAR MUDANÇAS NO ELEMENTO =====================
-
-// ------------------ PROPRIEDADES ----------
-
-    // document.getElementById('carregar-fonts').onclick = fontes;
-
-    // async function fontes() {
-    //     if ('fonts' in navigator) {
-    //         try {
-    //             const fonts = await navigator.fonts.query();
-
-    //             for (let i = 0, j = fonts.length; i < j; i++) {
-    //                 console.log(fonts[i].fullName);
-    //             }
-    //         } catch (ee) {
-    //             console.error(ee);
-    //         }
-    //     } 
-    //     else {
-    //         console.error('Seu navegador não tem suporte a navigator.fonts');
-    //     }
-    // }

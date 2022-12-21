@@ -334,6 +334,12 @@ main{
     padding: 3px;
 }
 
+#propriedade_Fonte{
+    text-align: center;
+    padding: 2px;
+    max-width: 90%;
+}
+
 /* .próximas_prorpriedades{
     font-family: ;
     font-size: ;

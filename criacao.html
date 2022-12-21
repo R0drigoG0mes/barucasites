@@ -188,7 +188,7 @@
         <div id="atalhos_Pai">
             <h2>Atalhos</h2>
             <hr>
-            <div class="atalhos"> Incorporar <span class="icon-embed2"></span></div>
+            <div class="atalhos" id="incorporarElemento"> Incorporar <span class="icon-embed2"></span></div>
             <div class="atalhos"> Posicionar Livremente <span class="icon-enlarge"></span></div>
             <div class="atalhos" id="deletarElemento"> Deletar <span class="icon-bin"></span></div>
             <div class="atalhos"> Limpar Texto <span class="icon-pencil"></span></div>
@@ -245,9 +245,8 @@
             <li>
                 <h3 class="titulo-propriedade Prop">Fonte</h3>
                 <div class="LinhaDePropriedade respiro Prop">
-                    <input list="browsers" class="Prop" id="propriedade_Fonte"/>
-                    <datalist id="browsers" class="Prop">
-                    <option value="Chrome" class="Prop">
+                    <input list="FontesDisponiveis" class="Prop" id="propriedade_Fonte"/>
+                    <datalist id="FontesDisponiveis" class="Prop">
                     </datalist>
                 </div>
             </li>
