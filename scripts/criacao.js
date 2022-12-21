@@ -20,6 +20,9 @@ const propriedade_AlinhamentoTexto = document.getElementById("propriedade_Alinha
 const propriedade_Fonte = document.getElementById("propriedade_Fonte");
 const FontesDisponiveis = document.getElementById("FontesDisponiveis");
 const propriedade_TamanhoFonte = document.getElementById("propriedade_TamanhoFonte");
+const propriedade_TamanhoDecoracaoTexto = document.getElementById("propriedade_TamanhoDecoracaoTexto");
+const propriedade_TipoDecoracaoTexto = document.getElementById("propriedade_TipoDecoracaoTexto");
+const propriedade_CorDecoracaoTexto = document.getElementById("propriedade_CorDecoracaoTexto");
 
 // ---------- PROPRIEDADES ------------
 
@@ -161,6 +164,21 @@ caixaFerramentas.addEventListener("click", function(e){
             }
             else{
                 SiteCriado.appendChild(caixaSpan);
+            }
+        }
+    }
+    else if(caminhoDoClique[0].id == 'caixaTexto_p'){
+        var caixaP = document.createElement("p");
+        caixaP.style.backgroundColor = '#eee';
+        caixaP.textContent = 'Essa é a sua caixa de texto';
+        var PerguntaAdicionar = confirm('Quer adicinar essa caixa de texto no seu site?');
+        if(PerguntaAdicionar == true){
+
+            if(ElementoSelecionado != null){
+                ElementoSelecionado.appendChild(caixaP);
+            }
+            else{
+                SiteCriado.appendChild(caixaP);
             }
         }
     }
@@ -327,9 +345,13 @@ document.addEventListener("click", function(e){
 
         var largura = caminhoDoClique3[0].getBoundingClientRect().width;
 
+        ElementoSelecionado.style.width = largura + 'px';
+
         propriedade_Largura.textContent = largura + 'px';
 
         var altura = caminhoDoClique3[0].getBoundingClientRect().height;
+
+        ElementoSelecionado.style.width = largura + 'px';
 
         propriedade_Altura.textContent = altura + 'px';
 
@@ -415,6 +437,75 @@ document.addEventListener("click", function(e){
         })
 
         // ----------- ALINAHMENRO DO TEXTO ----------------------
+
+        // ----------- DECORAÇÃO - TAMANHO - TIPO - COR ----------------------
+
+        var TamanhoDecoracaoTexo = ElementoSelecionado.style.textDecorationThickness;
+
+        if(TamanhoDecoracaoTexo == '' || TamanhoDecoracaoTexo == undefined){
+            TamanhoDecoracaoTexo = window.getComputedStyle(ElementoSelecionado).textDecorationThickness;
+        }
+
+        var CorDecoracaoTexto = ElementoSelecionado.style.textDecorationColor;
+
+        if(CorDecoracaoTexto == '' || CorDecoracaoTexto == undefined){
+            CorDecoracaoTexto = window.getComputedStyle(ElementoSelecionado).textDecorationColor;
+        }
+
+        var TipoDecoracaoText = ElementoSelecionado.style.textDecorationStyle;
+
+        if(TipoDecoracaoText == '' || TipoDecoracaoText == undefined){
+            TipoDecoracaoText = window.getComputedStyle(ElementoSelecionado).textDecorationStyle;
+        }
+
+        const Filtragem2 = CorDecoracaoTexto.replaceAll('rgb', '');
+        const Filtragem3 = Filtragem2.replaceAll(' ', '');
+        const Filtragem4 = Filtragem3.replaceAll(')', '.');
+        const Filtragem5 = Filtragem4.replaceAll('(', '');
+        const Filtragem6 = Filtragem5.replaceAll(',', ' ');
+
+        var todos = '';
+        var vermelho = '';
+        var verde = '';
+        var azul = '';
+        var contia = 0;
+
+        [...Filtragem6].forEach(caractere => {
+            if(caractere != ' ' && caractere != '.'){
+                todos += caractere;
+            }
+            else if(contia == 0){
+                contia++;
+                vermelho = todos;
+                todos = '';
+            }
+            else if(contia == 1){
+                contia++;
+                verde = todos;
+                todos = '';
+            }
+            else if(contia == 2){
+                azul = todos;
+                todos = '';
+                contia = 0;
+            }
+        })
+
+        var CorDecoracaoTextoHex = '#' + parseInt(vermelho).toString(16) + parseInt(verde).toString(16) + parseInt(azul).toString(16);
+
+        propriedade_CorDecoracaoTexto.value = CorDecoracaoTextoHex;
+
+        var TiposDecoracao = propriedade_TipoDecoracaoTexto.children;
+
+        [...TiposDecoracao].forEach(tipo => {
+            if(tipo.value == TipoDecoracaoText){
+                tipo.selected = true;
+            }
+        })
+
+        propriedade_TamanhoDecoracaoTexto.value = TamanhoDecoracaoTexo;
+
+        // ----------- DECORAÇÃO - TAMANHO - TIPO - COR ----------------------
 
         // ----------- FONTE ----------------------
 
@@ -571,5 +662,17 @@ propriedade_TamanhoFonte.addEventListener("change", function(e){
 propriedade_AlinhamentoTexto.addEventListener("change", function(e){
     ElementoSelecionado.style.textAlign = propriedade_AlinhamentoTexto.value;
 });
+
+propriedade_TamanhoDecoracaoTexto.addEventListener("change", function(e){
+    ElementoSelecionado.style.textDecorationThickness = propriedade_TamanhoDecoracaoTexto.value;
+})
+
+propriedade_TipoDecoracaoTexto.addEventListener("change", function(e){
+    ElementoSelecionado.style.textDecorationStyle = propriedade_TipoDecoracaoTexto.value;
+})
+
+propriedade_CorDecoracaoTexto.addEventListener("change", function(e){
+    ElementoSelecionado.style.textDecorationColor = propriedade_CorDecoracaoTexto.value;
+})
 
 // =================== APLICAR MUDANÇAS NO ELEMENTO =====================
