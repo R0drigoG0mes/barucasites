@@ -38,6 +38,7 @@ var CaixaFerramentasAberta = false;
 var CaixaPropriedadesAberta = false;
 var ElementoSelecionado;
 var FontesCarregadas = false;
+var Copiado = '';
 
 // -------------- VARIÁVEIS ------------------
 
@@ -229,11 +230,26 @@ caixaFerramentas.addEventListener("click", function(e){
             alert('Selecione um elemento para deletá-lo.');
         }
     }
-    else if(caminhoDoClique[0].id == 'incorporarElemento'){
-        propriedade_Fonte.click();
-    }
 
     // ----------------- DELETAR------------------
+
+    // ----------------- INCORPORAR ------------------
+
+    else if(caminhoDoClique[0].id == 'incorporarElemento'){
+
+        async function PegarTextoCopiado(){
+
+            Copiado = await navigator.clipboard.readText();
+
+            if(Copiado.startsWith("<style> @import url('https://fonts.googleapis.com") || Copiado.startsWith('<link rel="preconnect" href="https://fonts.googleapis.com">')){
+
+                document.head.innerHTML += Copiado;
+            }
+        }
+        PegarTextoCopiado();
+    }
+
+    // ----------------- INCORPORAR ------------------
 
     // ----------------- ATALHOS -----------------
 
@@ -408,9 +424,13 @@ document.addEventListener("click", function(e){
            fonte = window.getComputedStyle(ElementoSelecionado).fontFamily;
         }
 
-        const fontefinal = fonte; 
+        var fontefinal = fonte; 
 
-        propriedade_Fonte.value = fontefinal.replaceAll('"', '');
+        if(!fontefinal.includes("'") && !fontefinal.includes('"')){
+            fontefinal = "'" + fontefinal + "'";
+        }
+
+        propriedade_Fonte.value = fontefinal;
 
         // ----------- FONTE ----------------------
 
